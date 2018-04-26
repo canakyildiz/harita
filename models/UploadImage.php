@@ -1,12 +1,12 @@
 <?php
 
-namespace kouosl\sample\models;
+namespace kouosl\harita\models;
 
-use kouosl\sample\Module;
+use kouosl\harita\Module;
 use Yii;
 
 /**
- * This is the model class for table "samples".
+ * This is the model class for table "Harita".
  *
  * @property string $imageFile
  *
@@ -35,17 +35,17 @@ class UploadImage extends \yii\base\Model
 
             $this->imageName = Yii::$app->security->generateRandomString(16) . '.' . $this->imageFile->extension;
 
-            $imagePath = sprintf("%s/samples/%s",Yii::getAlias ( '@data' ),$this->imageName);
+            $imagePath = sprintf("%s/Harita/%s",Yii::getAlias ( '@data' ),$this->imageName);
 
             if (!$this->imageFile->saveAs($imagePath)) {
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'File not uploaded.' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('harita', 'File not uploaded.' )]);
             }
 
             return $this->imageName;
 
         } else {
 
-            yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Invalid File Type.' )]);
+            yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('harita', 'Invalid File Type.' )]);
 
             return null;
 

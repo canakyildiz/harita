@@ -8,7 +8,7 @@ use kouosl\theme\helpers\Html;
 use kouosl\theme\widgets\ActionColumn;
 
 
-$this->title 	= 'Samples Manage';
+$this->title 	= 'Harita Manage';
 $data['title'] 	= $this->title;
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -26,7 +26,7 @@ $data['GridView'] = GridView::widget([
                 'format' => 'html',
                 'label' => 'Picture',
                 'value' => function ($data) {
-                    return Html::img('/data/samples/' . $data['picture'],
+                    return Html::img('/data/Harita/' . $data['picture'],
                         ['width' => '60px']);
                 },
             ],

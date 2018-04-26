@@ -1,26 +1,26 @@
 <?php
 
-namespace kouosl\sample\models;
+namespace kouosl\harita\models;
 
 use Yii;
 
 /**
- * This is the model class for table "sample_data".
+ * This is the model class for table "harita_data".
  *
  * @property integer $id
  * @property string $name
  * @property integer $sample_id
  *
- * @property Samples $sample
+ * @property Harita $harita
  */
-class SampleData extends \yii\db\ActiveRecord
+class HaritaData extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'sample_data';
+        return 'harita_data';
     }
 
     /**
@@ -29,10 +29,10 @@ class SampleData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'sample_id'], 'required'],
-            [['sample_id'], 'integer'],
+            [['name', 'harita_id'], 'required'],
+            [['harita_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['sample_id'], 'exist', 'skipOnError' => true, 'targetClass' => Samples::className(), 'targetAttribute' => ['sample_id' => 'id']],
+            [['harita_id'], 'exist', 'skipOnError' => true, 'targetClass' => Harita::className(), 'targetAttribute' => ['sample_id' => 'id']],
         ];
     }
 
@@ -44,7 +44,7 @@ class SampleData extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'sample_id' => 'Sample ID',
+            'harita_id' => 'harita ID',
         ];
     }
 
@@ -53,6 +53,6 @@ class SampleData extends \yii\db\ActiveRecord
      */
     public function getSample()
     {
-        return $this->hasOne(Samples::className(), ['id' => 'sample_id']);
+        return $this->hasOne(Harita::className(), ['id' => 'harita_id']);
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace kouosl\sample\controllers\backend;
+namespace kouosl\harita\controllers\backend;
 
-use kouosl\sample\models\SampleData;
-use kouosl\sample\models\UploadImage;
+use kouosl\harita\models\SampleData;
+use kouosl\harita\models\UploadImage;
 use Yii;
-use kouosl\sample\models\Samples;
-use kouosl\sample\models\SamplesSearch;
+use kouosl\harita\models\Harita;
+use kouosl\harita\models\HaritaSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UnauthorizedHttpException;
@@ -14,9 +14,9 @@ use yii\web\Session;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
 /**
- * SamplesController implements the CRUD actions for Sample model.
+ * SamplesController implements the CRUD actions for harita model.
  */
-class SamplesController extends DefaultController
+class HaritaController extends DefaultController
 {
     public function behaviors()
     {
@@ -52,7 +52,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Lists all Sample models.
+     * Lists all harita models.
      * @return mixed
      */
     public function actionManage()
@@ -60,7 +60,7 @@ class SamplesController extends DefaultController
     	
 
     	
-        $searchModel = new SamplesSearch();
+        $searchModel = new HaritaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('_manage', [
@@ -70,7 +70,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Displays a single Sample model.
+     * Displays a single harita model.
      * @param integer $id
      * @return mixed
      */
@@ -84,7 +84,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Creates a new Sample model.
+     * Creates a new harita model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -92,7 +92,7 @@ class SamplesController extends DefaultController
     {
 
     	
-        $model = new Samples();
+        $model = new Harita();
 
         $uploadImage = new UploadImage();
 
@@ -104,7 +104,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('harita', 'harita Not Saved' )]);
 
                 return $this->render('_create', ['model' => $model]); // error
             }
@@ -121,7 +121,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Updates an existing Sample model.
+     * Updates an existing harita model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -145,7 +145,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('harita', 'harita Not Saved' )]);
 
                 return $this->render('_update', ['model' => $model]); // error
             }
@@ -162,7 +162,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Deletes an existing Sample model.
+     * Deletes an existing harita model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -185,15 +185,15 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Finds the Sample model based on its primary key value.
+     * Finds the harita model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Sample the loaded model
+     * @return harita the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Samples::findOne($id)) !== null) {
+        if (($model = Harita::findOne($id)) !== null) {
 
             return $model;
 

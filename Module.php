@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\sample;
+namespace kouosl\harita;
 use Yii;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBasicAuth;
@@ -57,16 +57,16 @@ class Module extends \kouosl\base\Module
         Yii::$app->i18n->translations['site/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath' => '@kouosl/sample/messages',
+            'basePath' => '@kouosl/harita/messages',
             'fileMap' => [
-                'sample/sample' => 'sample.php',
+                'harita/harita' => 'harita.php',
             ],
         ];
     }
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('sample/' . $category, $message, $params, $language);
+        return Yii::t('harita/' . $category, $message, $params, $language);
     }
 
     public static function initRules(){
@@ -75,7 +75,7 @@ class Module extends \kouosl\base\Module
             [
                 'class' => 'yii\rest\UrlRule',
                 'controller' => [
-                    'sample/samples',
+                    'harita/Harita',
                 ],
                 'tokens' => [
                     '{id}' => '<id:\\w+>'

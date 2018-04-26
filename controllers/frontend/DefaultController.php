@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\sample\controllers\frontend;
+namespace kouosl\harita\controllers\frontend;
 
 
 class DefaultController extends \kouosl\base\controllers\backend\BaseController
